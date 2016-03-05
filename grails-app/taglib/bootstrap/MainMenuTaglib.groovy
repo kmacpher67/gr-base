@@ -45,11 +45,6 @@ class MainMenuTagLib {
                                 }
                                 mkp.yieldUnescaped(bootstrap.localeSelector())
                             }
-							def attrsLi2 = [role: 'presentation']
-							attrsLi2.class = 'active'
-							li(attrsLi2) {
-                                mkp.yieldUnescaped(g.link(action: "auth", controller: "login", "LoginAuth")); ///login/auth
-                            }
 
                         }
                     }
