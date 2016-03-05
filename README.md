@@ -3,6 +3,8 @@
 This project is a skeleton for Grails 3 (.0.9 and 0.11) applications. It already has Bootstrap and Font Awesome embedded.
 I'll be adding the Spring Security for my own special mix. 
 
+I borrowed this from here: https://github.com/willcrisis/grails3-bootstrap-layouts
+
 ## How to use
 1. Clone this repo
 2. Remove `.git` folder
@@ -18,3 +20,21 @@ I'll be adding the Spring Security for my own special mix.
 * [Bootstrap](http://getbootstrap.com/): 3.3.6
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/): 4.3.0
 * [bootstrap-layouts] (https://github.com/willcrisis/grails3-bootstrap-layouts.git): 0.1
+
+## RAW notes: 
+I built this using grails 3.0.9, windows, JDK 1.7.0.3 
+
+set the grails home
+GRAILS_HOME
+C:\Users\ken\.grails\3.0.9
+
+CHECK 
+PATH= 
+C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.0.0\bin;C:\Users\ken\.grails\3.0.9\bin;C:\Program Files\Java\jdk1.7.0_03\bin;c:\Python27\;C:\Python27\Scripts;C:\apache-maven-3.3.9\bin
+
+I was trying to use a IDE like IntellJ, the GGTS is a pig and runs slow, takes a ton of memory, well spring, java Eclipse all are memory hogs. 
+
+End up just using command line to make it work, after trying to get IDE to work. 
+2> https://grails-plugins.github.io/grails-spring-security-core/
+
+3> get a clean project running in grails 3. git clone https://github.com/willcrisis/grails3-bootstrap-layouts.git

@@ -27,7 +27,7 @@ plugins {
 }
 
 version "0.21"
-group "bootstrap.layouts"
+group "com.spontorg"
 
 apply plugin: "spring-boot"
 apply plugin: "war"
@@ -75,7 +75,8 @@ dependencies {
     compile "org.grails.plugins:fields"
 
     compile "com.siprell.plugins:bootstrap-framework:1.0.3"
-
+	compile 'org.grails.plugins:spring-security-core:3.0.3'
+	
     runtime "org.grails.plugins:asset-pipeline"
 
     testCompile "org.grails:grails-plugin-testing"

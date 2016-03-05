@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: bootstrap.layouts
+        defaultPackage: com.spontorg
 info:
     app:
         name: '@info.app.name@'
