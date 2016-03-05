@@ -1,6 +1,7 @@
-# bootstrap-layouts
+# gr78-bootstrap-responsive security template
 
-This project is a skeleton for Grails 3 applications. It already has Bootstrap and Font Awesome embedded.
+This project is a skeleton for Grails 3 (.0.9 and 0.11) applications. It already has Bootstrap and Font Awesome embedded.
+I'll be adding the Spring Security for my own special mix. 
 
 ## How to use
 1. Clone this repo
@@ -16,3 +17,4 @@ This project is a skeleton for Grails 3 applications. It already has Bootstrap a
 * [Bootstrap Framework Plugin](https://github.com/kensiprell/bootstrap-framework): 1.0.3
 * [Bootstrap](http://getbootstrap.com/): 3.3.6
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/): 4.3.0
+* [bootstrap-layouts] (https://github.com/willcrisis/grails3-bootstrap-layouts.git): 0.1
