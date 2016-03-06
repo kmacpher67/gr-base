@@ -6,15 +6,30 @@ import com.spontorg.UserRole
 class BootStrap {
 
     def init = { servletContext ->
+
+		def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
+		def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
+
         new Person(firstName: 'John', lastName: 'Doe', dateOfBirth: new Date(), email: 'john.doe@company.com', age: 25).save(flush: true);
-		def r = new Role("ROLE_ADMIN").save();
-		def userRole = new Role('ROLE_USER').save();
-		
-		def u = new User(username: 'admin', password: 'admin').save();	
+
 		def testUser = new User('me', 'password').save()
-		
-		def ur= UserRole.create(u,r);
-		def tr= UserRole.create(testUser,userRole);
+
+		def adminUser = User.findByUsername('admin') ?: new User(
+				username: 'admin',
+				password: 'admin',
+				enabled: true).save(failOnError: true)
+
+		def basicUser = User.findByUsername('guest') ?: new User(
+				username: 'guest',
+				password: 'guest',                          //pw encoded by security plugin
+				enabled: true).save(failOnError: true)
+
+		if (!adminUser.authorities.contains(adminRole)) {
+			UserRole.create adminUser, adminRole
+		}
+		if (!basicUser.authorities.contains(userRole)) {
+			UserRole.create basicUser, userRole
+		}
     }
     def destroy = {
     }

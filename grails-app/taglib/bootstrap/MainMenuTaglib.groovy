@@ -2,8 +2,10 @@ package bootstrap
 
 import groovy.xml.MarkupBuilder
 
+
 class MainMenuTagLib {
     static namespace = 'bootstrap'
+    def springSecurityService
 
     def mainMenu = {attrs, body ->
         StringWriter output = new StringWriter()
@@ -37,7 +39,17 @@ class MainMenuTagLib {
                                 }
                             }
                         }
+                        def user = springSecurityService.isLoggedIn() ? springSecurityService.loadCurrentUser() : null 
+						
+
+
                         ul(class: 'nav navbar-nav navbar-right') {
+						
+							if(user!=null){
+								li(role: 'presentation', class: 'active') {
+									mkp.yieldUnescaped(g.link(controller: "user", action: "show", id:user.id, g.message(code:user.username, default: user.username)))
+								}						
+							}
                             li(class: 'dropdown') {
                                 a(href: '#', class: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button') {
                                     mkp.yieldUnescaped(g.message(code: 'default.language.label', default: 'Language'))
