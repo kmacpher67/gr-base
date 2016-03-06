@@ -41,8 +41,6 @@ class MainMenuTagLib {
                         }
                         def user = springSecurityService.isLoggedIn() ? springSecurityService.loadCurrentUser() : null 
 						
-
-
                         ul(class: 'nav navbar-nav navbar-right') {
 						
 							if(user!=null){

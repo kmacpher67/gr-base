@@ -15,6 +15,7 @@ class UserController {
         respond User.list(params), model:[userCount: User.count()]
     }
 
+	@Secured('ROLE_USER')
     def show(User user) {
         respond user
     }
