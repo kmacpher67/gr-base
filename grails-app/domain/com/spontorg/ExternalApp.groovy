@@ -36,6 +36,18 @@ class ExternalApp {
 		this.isActive = true
 	}
 	
+	ExternalApp(String name, String description, String accessKey, int appOrder, boolean isActive,  Date createDate, User owner   ){
+			this()
+		this.name = nameDate createDate
+		this.description = description
+        this.accessKey = accessKey
+		this.createDate = createDate
+		this.isActive = isActive
+		this.owner = owner
+	}
+	
+	
+	
     static constraints = {
 	
 		name size: 1..30, unique: true, blank:false
