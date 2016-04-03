@@ -30,6 +30,8 @@ class BootStrap {
 		if (!basicUser.authorities.contains(userRole)) {
 			UserRole.create basicUser, userRole
 		}
+			
+		def externalApp1 = ExternalApp.findByName('default') ?: new ExternalApp(name:'default',description:'default ext app',accessKey:'asdf').save(flush:true)
     }
     def destroy = {
     }

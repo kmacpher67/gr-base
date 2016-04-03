@@ -1,6 +1,17 @@
 package com.spontorg
 
 import grails.rest.*
+import grails.plugin.springsecurity.annotation.Secured
+
+
+/**
+ * remote json access to data 
+ * curl -i -H "Accept: application/json" localhost:8080/appstatus/1
+ *   {"id":1,"title":"The Stand"}
+ */ 
+ //'ROLE_ADMIN','ROLE_USER'])
+//'ROLE_ADMIN','ROLE_USER'])
+// @ Secured(['permitAll']) 
 
 @Resource(uri='/appstatus')
 class ExternalApp {
