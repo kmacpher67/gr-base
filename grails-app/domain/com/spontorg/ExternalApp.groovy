@@ -19,11 +19,23 @@ class ExternalApp {
 	String name 
 	String description
 	String accessKey
+	int appOrder 
+	boolean isActive 
+	Date createDate
 	User owner 
 	
 	Map statusOuts
     static hasMany = [statusOuts: StatusOut]
 
+	ExternalApp(String name, String description, String accessKey) {
+		this()
+		this.name = name
+		this.description = description
+        this.accessKey = accessKey
+		this.createDate = new Date()
+		this.isActive = true
+	}
+	
     static constraints = {
 	
 		name size: 1..30, unique: true, blank:false

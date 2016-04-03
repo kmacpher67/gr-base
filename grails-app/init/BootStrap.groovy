@@ -2,6 +2,7 @@ import bootstrap.Person
 import com.spontorg.Role
 import com.spontorg.User
 import com.spontorg.UserRole
+import com.spontorg.ExternalApp
 
 class BootStrap {
 
