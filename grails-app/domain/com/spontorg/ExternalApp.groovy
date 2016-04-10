@@ -9,12 +9,10 @@ import grails.plugin.springsecurity.annotation.Secured
  * curl -i -H "Accept: application/json" localhost:8080/appstatus/1
  *   {"id":1,"title":"The Stand"}
  */ 
- //'ROLE_ADMIN','ROLE_USER'])
 //'ROLE_ADMIN','ROLE_USER'])
-// @ Secured(['permitAll']) 
-
-@Resource(uri='/appstatus')
-class ExternalApp {
+//'ROLE_ADMIN','ROLE_USER'])
+@ Secured(['ROLE_ADMIN','ROLE_USER']) 
+class ExternalApp implements Serializable {
 
 	String name 
 	String description
