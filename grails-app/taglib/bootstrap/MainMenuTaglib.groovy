@@ -5,7 +5,7 @@ import groovy.xml.MarkupBuilder
 
 class MainMenuTagLib {
     static namespace = 'bootstrap'
-    def springSecurityService
+		def springSecurityService
 
     def mainMenu = {attrs, body ->
         StringWriter output = new StringWriter()
@@ -23,23 +23,38 @@ class MainMenuTagLib {
                         mkp.yieldUnescaped(g.meta(name: 'info.app.name'))
                     }
                 }
-
+				
+                def user = springSecurityService.isLoggedIn() ? springSecurityService.loadCurrentUser() : null 
+				
                 if (body()) {
                     mkp.yieldUnescaped(body())
                 } else {
                     div(class: 'collapse navbar-collapse', id: 'main-menu') {
                         ul(class: 'nav navbar-nav') {
-                            grailsApplication.controllerClasses.sort { it.fullName }.each { c ->
-                                def attrsLi = [role: 'presentation']
-                                if (c.logicalPropertyName == controllerName) {
-                                    attrsLi.class = 'active'
-                                }
-                                li(attrsLi) {
-                                    mkp.yieldUnescaped(g.link(controller: c.logicalPropertyName, g.message(code: "${c.logicalPropertyName}.plural.label", default: c.name)))
-                                }
+
+                            grailsApplication.controllerClasses.sort{ it.fullName }.each { c ->
+								def attrsLi = [role: 'presentation']
+								if (c.getStaticPropertyValue('linkMe', Boolean) ) {
+									attrsLi.class = 'active'
+									li(attrsLi) {
+									 mkp.yieldUnescaped(g.link(controller: c.logicalPropertyName, g.message(code: "${c.logicalPropertyName}.plural.label", default: c.name)))
+									}	
+								}
                             }
+							def attrsLi1 = [role: 'presentation']
+							attrsLi1.class = 'active'
+							if (user!=null){
+								li(attrsLi1){
+									mkp.yieldUnescaped('<a href="/logout/index">Logout</a>')
+									}
+								}
+							else{
+								li(attrsLi1){
+									mkp.yieldUnescaped('<a href="/login/index">Login</a>')
+									}							
+							}
                         }
-                        def user = springSecurityService.isLoggedIn() ? springSecurityService.loadCurrentUser() : null 
+
 						
                         ul(class: 'nav navbar-nav navbar-right') {
 						

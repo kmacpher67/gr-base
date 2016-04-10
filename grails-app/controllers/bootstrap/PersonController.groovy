@@ -7,6 +7,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class PersonController extends BaseController<Person> {
 
+	static Boolean linkMe = false
+
     PersonController() {
         super(Person)
     }

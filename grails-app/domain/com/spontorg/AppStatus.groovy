@@ -3,7 +3,7 @@ package com.spontorg
 import grails.rest.*
 
 @Resource(uri='/appstatus', formats=['json'], readOnly=true)
-class AppStatus {
+class AppStatus implements Serializable  {
 
 	String accessKey
 	String tweetOutputText
