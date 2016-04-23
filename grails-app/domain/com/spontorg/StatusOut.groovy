@@ -17,6 +17,8 @@ class StatusOut {
     }
 	String toString() {
 		int displayLen =15
+		if (tweetOutputText==null)
+			return "null"
 		if (displayLen>tweetOutputText.length())
 			displayLen=tweetOutputText.length()-1
         return tweetOutputText.substring(0,displayLen)
