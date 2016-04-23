@@ -43,7 +43,10 @@ class ExternalApp implements Serializable {
 		this.isActive = isActive
 		this.owner = owner
 	}
-	
+
+	String toString() {
+        return name
+    }	
 	
 	
     static constraints = {
