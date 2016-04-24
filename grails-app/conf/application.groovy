@@ -55,7 +55,7 @@ grails.plugin.springsecurity.logout.postOnly = false
 //  } 
 //}
 
-grails.mime.types = [
-    json:          ['application/json', 'text/json'],
-    xml:           ['text/xml', 'application/xml']
-]
+// grails.mime.types = [
+    // json:          ['application/json', 'text/json'],
+    // xml:           ['text/xml', 'application/xml']
+// ]
