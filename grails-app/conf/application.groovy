@@ -17,6 +17,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**/images/**',   access: ['permitAll']],
 	[pattern: '/dbconsole/**',   access: ['ROLE_ADMIN']],
 	[pattern: '/appstatus/**', access: ['permitAll']],
+	[pattern: '/appStatus/**', access: ['permitAll']],
+	[pattern: '/stats/**', access: ['permitAll']],
+	[pattern: '/stat/**', access: ['permitAll']],
 	[pattern: '/**/favicon.ico', access: ['permitAll']]
 
 ]
@@ -51,3 +54,8 @@ grails.plugin.springsecurity.logout.postOnly = false
 //    }
 //  } 
 //}
+
+grails.mime.types = [
+    json:          ['application/json', 'text/json'],
+    xml:           ['text/xml', 'application/xml']
+]
