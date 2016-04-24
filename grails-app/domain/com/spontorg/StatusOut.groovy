@@ -7,6 +7,7 @@ class StatusOut {
 	String typeCode 
     User owner
 	ExternalApp externalApp
+	boolean active = true
 
     static constraints = {
 		tweetOutputText size: 1..140, unique: true, blank:false

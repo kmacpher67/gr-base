@@ -1,111 +1,38 @@
 package com.spontorg
 
 import static org.springframework.http.HttpStatus.*
+import static org.springframework.http.HttpMethod.*
 import grails.transaction.Transactional
+import grails.rest.RestfulController
 import grails.plugin.springsecurity.annotation.Secured
+import grails.converters.JSON
+import com.spontorg.StatusOut
+import com.spontorg.ExternalApp
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+
 @Transactional(readOnly = true)
-class AppStatusController {
-
-	static Boolean linkMe = false
-
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond AppStatus.list(params), model:[appStatusCount: AppStatus.count()]
+class AppStatusController  extends RestfulController {
+    static responseFormats = ['json', 'xml']
+	
+    AppStatusController() {
+        super(StatusOut)
     }
 
-    def show(AppStatus appStatus) {
-        respond appStatus
-    }
-
-    def create() {
-        respond new AppStatus(params)
-    }
-
-    @Transactional
-    def save(AppStatus appStatus) {
-        if (appStatus == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        if (appStatus.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond appStatus.errors, view:'create'
-            return
-        }
-
-        appStatus.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'appStatus.label', default: 'AppStatus'), appStatus.id])
-                redirect appStatus
-            }
-            '*' { respond appStatus, [status: CREATED] }
-        }
-    }
-
-    def edit(AppStatus appStatus) {
-        respond appStatus
-    }
-
-    @Transactional
-    def update(AppStatus appStatus) {
-        if (appStatus == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        if (appStatus.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond appStatus.errors, view:'edit'
-            return
-        }
-
-        appStatus.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'appStatus.label', default: 'AppStatus'), appStatus.id])
-                redirect appStatus
-            }
-            '*'{ respond appStatus, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(AppStatus appStatus) {
-
-        if (appStatus == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        appStatus.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'appStatus.label', default: 'AppStatus'), appStatus.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'appStatus.label', default: 'AppStatus'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
+	def index1(String key){
+		System.out.println("key index1=" + key)
+	    def ok = ExternalApp.findByAccessKey(key)
+		System.out.println("ok="+ok)
+		def statusOut1 = []
+		if (ok!=null && ok.accessKey==key){
+			System.out.println("AppStatusController there="+ ok.id)
+			 statusOut1 = StatusOut.findAllByExternalAppAndActive(ok,true)
+			 System.out.println("byid" +statusOut1)
+		}
+        render statusOut1 as JSON
+	}
+	
+	def index(Integer max) {
+    params.max = Math.min(max ?: 10, 100)
+    [statusOutList: StatusOut.list(params), statusOutCount: StatusOut.count()]
+	}	
 }

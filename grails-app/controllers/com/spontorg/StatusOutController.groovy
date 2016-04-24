@@ -4,12 +4,13 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_USER','ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class StatusOutController {
 
-	static Boolean linkMe = true
-	
+	// need this to show up on menu
+		static Boolean linkMe = true
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
