@@ -2,10 +2,20 @@
 <html>
     <head>
         <meta name="layout" content="main" />
+		<g:set var="entityName" value="${message(code: 'person.label', default: 'ExternalApp')}" scope="request" />
+		<g:set var="entityNamePlural" value="${message(code: 'person.plural.label', default: 'ExternalApps')}" scope="request"/>
+        <title><g:message code="default.list.label" args="[entityName]" /></title>
+
         <g:set var="entityName" value="${message(code: 'externalApp.label', default: 'ExternalApp')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
+		<bootstrap:submenuList />
+
+		<bootstrap:messages />
+
+		<bootstrap:table>
+
         <a href="#show-externalApp" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>

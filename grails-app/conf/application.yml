@@ -13,8 +13,46 @@ spring:
         template:
             check-template-location: false
 
+server:
+   sessionTimeout: 7200  #seconds
 ---
 grails:
+    plugin:
+        springsecurity:
+            userLookup:
+                userDomainClassName: com.spontorg.User
+                authorityJoinClassName: com.spontorg.UserRole
+            authority:
+                className: com.spontorg.Role
+
+            securityConfigType: InterceptUrlMap
+            interceptUrlMap:
+                - pattern: '/'
+                  access:
+                    - permitAll
+                - pattern: '/**'
+                  access:
+                    - permitAll
+            successHandler:
+                defaultTargetUrl: '/hello/index'
+
+            facebook:
+                appId: '1603239159996051'
+                secret: '4cb3c4818e496082f9625166041af2e4'
+                domain:
+                    classname: 'com.spontorg.FacebookUser'
+                    appUserConnectionPropertyName: 'user'
+                host: live.spontaneousorganization.com
+                filter:
+                    type: redirect
+                permissions: ['email','public_profile','user_friends'] 
+                rememberMe:
+                    persistent: true
+                    persistentToken:
+                        domainClassName:'com.spontorg.PersistentLogin'
+                roleHierarchyEntryClassName: 'com.spontorg.RoleHierarchyEntry'
+                logout:
+                     postOnly: false
     mime:
         disable:
             accept:
@@ -65,6 +103,10 @@ grails:
                 scriptlets: html
                 taglib: none
                 staticparts: none
+    databinding:
+        dateFormats: ["dd/MM/yyyy HH:mm", "dd/MM/yyyy"]
+    dbconsole:
+        enabled: true
 ---
 hibernate:
     cache:

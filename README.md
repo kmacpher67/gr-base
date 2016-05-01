@@ -1,9 +1,16 @@
-# gr78-bootstrap-responsive security template
+# ken's base-gr starter project for coolness 
 
-This project is a skeleton for Grails 3 (.0.9 and 0.11) applications. It already has Bootstrap and Font Awesome embedded.
-I'll be adding the Spring Security for my own special mix. 
+borrowed from several sources and FB plug-ins and hours of hacking. 
+https://github.com/splix/grails-spring-security-facebook
 
-I borrowed this from here: https://github.com/willcrisis/grails3-bootstrap-layouts
+## @TODO for features
+1. End User interaction and OAuth user login
+2.
+
+## TADONE features 
+1. Spring Security for my own special mix. [roles]
+2. This project is a skeleton for Grails 3 (.0.9 and 0.11) applications. It already has Bootstrap and Font Awesome embedded.
+3. I borrowed this from here: https://github.com/willcrisis/grails3-bootstrap-layouts
 
 ## How to use
 1. Clone this repo
@@ -15,7 +22,7 @@ I borrowed this from here: https://github.com/willcrisis/grails3-bootstrap-layou
 7. Run `git init` in your app folder and push the project to any git repository
 
 ## Versions used
-* [Grails](http://grails.org/): 3.0.11
+* [Grails](http://grails.org/): 3.0.11 or .9 works
 * [Bootstrap Framework Plugin](https://github.com/kensiprell/bootstrap-framework): 1.0.3
 * [Bootstrap](http://getbootstrap.com/): 3.3.6
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/): 4.3.0

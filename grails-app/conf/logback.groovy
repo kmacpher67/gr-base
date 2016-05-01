@@ -9,6 +9,10 @@ appender('STDOUT', ConsoleAppender) {
 }
 
 root(ERROR, ['STDOUT'])
+logger("com.the6hours", DEBUG, ["CONSOLE"])
+logger("org.springframework.social", DEBUG, ["CONSOLE"])
+logger("com.spontorg", DEBUG, ["CONSOLE"])
+logger("grails.plugins.springsocial", DEBUG, ["CONSOLE"])
 
 def targetDir = BuildSettings.TARGET_DIR
 if (Environment.isDevelopmentMode() && targetDir) {
