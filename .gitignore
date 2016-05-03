@@ -10,3 +10,12 @@ build/
 .settings
 .classpath
 .asscache
+devDb.h2.db
+devDb.lock.db
+devDb.trace.db
+fileName.sql
+prodDb.h2.db
+prodDb.trace.db
+testDb.h2.db
+testDb.lock.db
+prodDb.lock.db
