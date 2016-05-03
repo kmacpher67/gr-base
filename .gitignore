@@ -19,3 +19,5 @@ prodDb.trace.db
 testDb.h2.db
 testDb.lock.db
 prodDb.lock.db
+nohup.out
+hs_err_*
