@@ -12,7 +12,7 @@
 	<HR>
 	<asset:image src="logo.jpg" width="200" height="200"/>
 	<HR>
-	<html:render file="privacy.html"/>
+	<a href="/privacy.html"  target="_blank" />Privacy Policy Details</a>
 	<HR>
 </div>
 </body>

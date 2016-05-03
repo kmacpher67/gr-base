@@ -26,6 +26,8 @@
     <div class="container-fluid">
         <g:layoutBody/>
     </div>
+	<div class="footer">
+		<a href="/privacy.html"  target="_blank" />Privacy Policy Details</a>
+	</div>
 </body>
-
 </html>

@@ -6,11 +6,12 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 beans = {
 
     redirectFailureHandlerExample(SimpleUrlAuthenticationFailureHandler) {
-        defaultFailureUrl = '/failed'
+        defaultFailureUrl = '/login/auth'
+		//used to be failed 
     }
 
     redirectFailureHandler(RedirectFailureToRegistration) {
-        defaultFailureUrl = '/failed'
+        defaultFailureUrl = '/login/auth'
         registrationUrl = '/register'
     }
 
