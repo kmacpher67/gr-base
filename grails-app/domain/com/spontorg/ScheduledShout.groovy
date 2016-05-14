@@ -1,0 +1,27 @@
+package com.spontorg
+
+class ScheduledShout {
+
+    String name
+	String eventTitle
+	Date releaseDate
+	
+	StatusOut statusOut
+
+    static constraints = {
+		
+		name nullable:false
+		eventTitle nullable:true
+		statusOut unique: false , nullable: true 
+	
+    }
+
+	String toString() {
+		int displayLen =20
+		if (name==null)
+			return eventTitle+"null"
+		if (displayLen>(name.length()+eventTitle.length()))
+			displayLen=(name.length()+eventTitle.length())
+        return (name+eventTitle).substring(0,displayLen)
+    }
+}

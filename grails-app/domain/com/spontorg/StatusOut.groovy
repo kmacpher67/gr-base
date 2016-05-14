@@ -17,11 +17,11 @@ class StatusOut {
 		externalApp nullable: true
     }
 	String toString() {
-		int displayLen =15
+		int displayLen =20
 		if (tweetOutputText==null)
 			return "null"
 		if (displayLen>tweetOutputText.length())
-			displayLen=tweetOutputText.length()-1
+			displayLen=tweetOutputText.length()
         return tweetOutputText.substring(0,displayLen)
     }
 }

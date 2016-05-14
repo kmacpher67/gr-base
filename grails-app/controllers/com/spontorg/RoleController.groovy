@@ -8,7 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class RoleController {
 
-	static Boolean linkMe = true
+	static Boolean linkMe = false
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
