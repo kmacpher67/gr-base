@@ -44,7 +44,7 @@ class AppStatusController  extends RestfulController {
 			statusOutList = StatusOut.findAllByExternalAppAndActive(ok,true)
 			System.out.println("statusOutList ok,true, size statusoutlist=" +statusOutList.size())
 			System.out.println(" date now= " + now)
-			shoutCurrent = ScheduledShout.findAllByStatusOutInListAndReleaseDateLessThanEquals(statusOutList,now,[max:1, sort:"releaseDate" ])
+			shoutCurrent = ScheduledShout.findAllByStatusOutInListAndReleaseDateLessThanEqualsAndDeliveredNotEqual(statusOutList,now,true,[max:1, sort:"releaseDate" ])
 			if (shoutCurrent !=null || shoutCurrent.size()>0){
 				System.out.println("Shout current not null status is:"+ shoutCurrent.statusOut)
 				statusOut1.add(0,shoutCurrent.statusOut)
