@@ -20,7 +20,9 @@ class ExternalApp implements Serializable {
 	int appOrder 
 	boolean isActive 
 	Date createDate
-	User owner 
+	User owner
+	CameraDetails cameraDetails
+	StatusOut defaultValue
 	
 	Map statusOuts
     static hasMany = [statusOuts: StatusOut]
@@ -55,6 +57,8 @@ class ExternalApp implements Serializable {
 		description size: 0..250
 		accessKey size: 4..50
 		owner nullable:true
+		defaultValue nullable:true
 		statusOuts nullable:true
+		cameraDetails nullable: true
     }
 }

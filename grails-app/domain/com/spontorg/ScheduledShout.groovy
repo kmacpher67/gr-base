@@ -4,7 +4,9 @@ class ScheduledShout {
 
     String name
 	String eventTitle
-	Date releaseDate
+	Date releaseDate = new Date()
+	int priority=0
+	boolean delivered = false
 	
 	StatusOut statusOut
 
@@ -12,8 +14,10 @@ class ScheduledShout {
 		
 		name nullable:false
 		eventTitle nullable:true
-		statusOut unique: false , nullable: true 
-	
+		statusOut unique: false , nullable: true
+		delivered nullable: true
+		releaseDate type:"datetime"
+		priority nullable:true
     }
 
 	String toString() {

@@ -25,9 +25,61 @@ class HelloController {
 	def facebook
 	def connectionRepository
 	def faceUserHelperService
+	def imageGrabberService
 	
   	static Boolean linkMe = true
- 
+
+	def captureImage(){
+		println(" RUNNING capture mode" )
+		def baseFolder = grailsAttributes.getApplicationContext().getResource("/").file.absolutePath
+		println("captureImage running! - baseFolder="+baseFolder)
+		imageGrabberService.baseFolder=baseFolder
+		def imagein =imageGrabberService.captureImage()
+
+		def imageList = [imagein]
+		println imageList
+
+
+		showImages("")
+	}
+
+	def showImages(String imgDir){
+		if (imgDir==null || imgDir==""){
+			imgDir="images"
+		}
+		println("\n\n SHOW IMAGES imgDir="+ imgDir)
+		def model =[:]
+		def baseFolder = grailsAttributes.getApplicationContext().getResource("/"+imgDir).file.absolutePath
+		//def baseFolder = grailsAttributes.getApplicationContext().getResource("/").getFile().toString()
+//		def baseFolder = new File(".").listFiles().toString()
+//		println baseFolder
+//		def imagesFolder = baseFolder + imgDir
+//		println imagesFolder
+//		a.lastModified() <=> b.lastModified()
+//		a.lastModified() <=> b.lastModified()
+//		//to reverse sort on lastModified date use below
+//		//-(a.lastModified() <=> b.lastModified())
+
+		def imageList = []
+		File[] imageList1 = new File(baseFolder).listFiles()?.sort{a, b ->
+			a.lastModified() <=> b.lastModified()
+		}
+		println imageList1
+		imageList1.each { def f ->
+							imageList.add(f.name)
+						}
+		println imageList
+		println "size="+ imageList1.size()
+		println "size="+ imageList.size()
+		model.imageList=imageList
+		println(" meta data typeName=" + imageList1.getClass().typeName )
+
+		//imageGrabberService.createAnimatedGif(imageList1)
+		imageGrabberService.publishEvent( imageList1)
+
+		render view: 'imageView', model: model
+	}
+
     def helloFB = {
 		System.out.println("helloFB wowo")
 
