@@ -2,7 +2,7 @@ package com.spontorg
 
 class StatusTimeLine {
 
-    long deliveryIndex = new Date().getTime()/1000
+    long deliveryIndex = (new Date(2016,5,1).getTime() - new Date().getTime())/1000
     ScheduledShout scheduleShout
     Date dateCreated = new Date()
     String details

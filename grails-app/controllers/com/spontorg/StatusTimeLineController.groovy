@@ -11,10 +11,11 @@ class StatusTimeLineController {
     // need this to show up on menu
     static Boolean linkMe = true
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    // removed delete: "DELETE"
+    static allowedMethods = [save: "POST", update: "PUT" ]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 50, 9999)
         respond StatusTimeLine.list(params), model:[statusTimeLineCount: StatusTimeLine.count()]
     }
 

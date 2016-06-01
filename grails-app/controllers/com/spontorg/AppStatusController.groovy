@@ -46,8 +46,8 @@ class AppStatusController  extends RestfulController {
 			System.out.println(" date now= " + now)
 			shoutCurrent = ScheduledShout.findAllByStatusOutInListAndReleaseDateLessThanEqualsAndDeliveredNotEqual(statusOutList,now,true,[max:1, sort:"releaseDate" ])
 			if (shoutCurrent !=null || shoutCurrent.size()>0){
-				System.out.println("Shout current not null status is:"+ shoutCurrent.statusOut)
-				statusOut1.add(0,shoutCurrent.statusOut)
+				System.out.println("Shout current not null status is:"+ shoutCurrent.get(0).statusOut)
+				statusOut1.add(0,shoutCurrent.get(0).statusOut)
 				//def statusTimeLine = StatusTimeLine.findOrSaveByScheduleShout(shoutCurrent)
 				def statusTimeLine = StatusTimeLine.create()
 				statusTimeLine.scheduleShout=shoutCurrent.get(0)
