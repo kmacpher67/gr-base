@@ -18,7 +18,7 @@ class StatusOut {
     }
 	String toString() {
 
-		String externApp = externalApp.name.length()
+		String externApp = externalApp?.name ?: "NULL"
 		if (externApp.length()>5){
 			externApp = externalApp.name.substring(0,5);
 		}
