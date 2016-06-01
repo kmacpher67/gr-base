@@ -50,6 +50,7 @@ class AppStatusController  extends RestfulController {
 				statusOut1.add(0,shoutCurrent.get(0).statusOut)
 				//def statusTimeLine = StatusTimeLine.findOrSaveByScheduleShout(shoutCurrent)
 				def statusTimeLine = StatusTimeLine.create()
+				statusTimeLine.deliveryIndex = StatusTimeLine.count()+1
 				statusTimeLine.scheduleShout=shoutCurrent.get(0)
 				statusTimeLine.save(flush:true)
 				System.out.println("statusTimeLine create NEW" + statusTimeLine)

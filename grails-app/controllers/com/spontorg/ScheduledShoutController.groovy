@@ -19,6 +19,11 @@ class ScheduledShoutController {
         respond ScheduledShout.list(params), model:[scheduledShoutCount: ScheduledShout.count()]
     }
 
+    def resetAll(){
+
+        ScheduledShout.executeUpdate("update ScheduledShout set delivered=false; ")
+    }
+
     def show(ScheduledShout scheduledShout) {
         respond scheduledShout
     }

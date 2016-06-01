@@ -2,13 +2,13 @@ package com.spontorg
 
 class StatusTimeLine {
 
-    long deliveryIndex = (new Date(2016,5,1).getTime() - new Date().getTime())/1000
+    long deliveryIndex = 11
     ScheduledShout scheduleShout
     Date dateCreated = new Date()
     String details
 
     static constraints = {
-        deliveryIndex editable:false
+        deliveryIndex editable:true
         scheduleShout  nullable: true, editable:false
         dateCreated nullable:true, editable:false
         details nullable:true
