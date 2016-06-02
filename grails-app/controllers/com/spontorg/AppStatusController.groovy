@@ -49,17 +49,20 @@ class AppStatusController  extends RestfulController {
 				System.out.println("Shout current not null status is:"+ shoutCurrent.get(0).statusOut)
 				statusOut1.add(0,shoutCurrent.get(0).statusOut)
 				//def statusTimeLine = StatusTimeLine.findOrSaveByScheduleShout(shoutCurrent)
-				def statusTimeLine = StatusTimeLine.create()
-				statusTimeLine.deliveryIndex = StatusTimeLine.count()+1
-				statusTimeLine.scheduleShout=shoutCurrent.get(0)
-				statusTimeLine.save(flush:true)
+				createTimeLine(shoutCurrent.get(0))
 				System.out.println("statusTimeLine create NEW" + statusTimeLine)
 				shoutCurrent[0].delivered=true
 				shoutCurrent[0].save(flush: true);
 			}
 			else{
 				System.out.println("shoutCurrent IZ NULL! DEFULT" );
-				statusOut1.add(0,shoutCurrent.statusOut)
+				if (ok.defaultValue!=null ){
+					System.out.println("SETTING EXTERNAL app DEFAULT..."+  ok.defaultValue );
+					ScheduledShout defShout= new ScheduledShout().setName("DEFAULT External APP"+ok.name)
+					defShout.setStatusOut(ok.defaultValue )
+					createTimeLine(defShout)
+					statusOut1.add(0,defShout)
+				}
 			}
 			System.out.println("shoutCurrent in list" +statusOut1)
 		}
@@ -68,6 +71,13 @@ class AppStatusController  extends RestfulController {
 			render(status: 401, text: 'Failed provide valid authkey this key is bogus= ${key}')
 		}
 		render statusOut1 as JSON
+	}
+
+	private createTimeLine(ScheduledShout scheduleShout){
+		def statusTimeLine = StatusTimeLine.create()
+		statusTimeLine.deliveryIndex = StatusTimeLine.count()+1
+		statusTimeLine.scheduleShout=scheduleShout
+		statusTimeLine.save(flush:true)
 	}
 
 	def indexDelivered(String key, int id){

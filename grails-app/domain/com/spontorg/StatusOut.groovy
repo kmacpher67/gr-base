@@ -23,13 +23,13 @@ class StatusOut {
 			externApp = externalApp.name.substring(0,5);
 		}
 
-		int displayLen =20
+		int displayLen =24
 
 		if (tweetOutputText==null)
-			return "null"
+			return externApp+" is NULL"
 
 		if (displayLen>tweetOutputText.length())
 			displayLen=tweetOutputText.length()
-        return externApp+tweetOutputText.substring(0,displayLen)
+        return externApp+"-"+tweetOutputText.substring(0,displayLen)
     }
 }
