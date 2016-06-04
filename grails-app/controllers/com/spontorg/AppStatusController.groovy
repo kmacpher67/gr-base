@@ -49,7 +49,7 @@ class AppStatusController  extends RestfulController {
 				System.out.println("Shout current not null status is:"+ shoutCurrent.get(0).statusOut)
 				statusOut1.add(0,shoutCurrent.get(0).statusOut)
 				//def statusTimeLine = StatusTimeLine.findOrSaveByScheduleShout(shoutCurrent)
-				createTimeLine(shoutCurrent.get(0))
+				def statusTimeLine = createTimeLine(shoutCurrent.get(0))
 				System.out.println("statusTimeLine create NEW" + statusTimeLine)
 				shoutCurrent[0].delivered=true
 				shoutCurrent[0].save(flush: true);
@@ -78,6 +78,7 @@ class AppStatusController  extends RestfulController {
 		statusTimeLine.deliveryIndex = StatusTimeLine.count()+1
 		statusTimeLine.scheduleShout=scheduleShout
 		statusTimeLine.save(flush:true)
+		return statusTimeLine
 	}
 
 	def indexDelivered(String key, int id){
