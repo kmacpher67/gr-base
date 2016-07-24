@@ -51,7 +51,7 @@ class BootStrap {
 		def fbGuest = FacebookUser.findByUid(0000) ?: new FacebookUser( uid: 0000, accessToken: "0000", accessTokenExpires: expireAt, user: basicUser).save(flush:true)
 		System.out.println(" BOOTSRAP INIT FacebookUser.findByUid(1111) " + fbGuest.uid)
 
-		def defaultStatus = StatusOut.findByName('default')  ?: new ExternalApp(name:'default',description:'default ext app',accessKey:'asdf').save(flush:true)
+		//def defaultStatus = StatusOut.findByName('default')  ?:
 		def externalApp1 = ExternalApp.findByName('default') ?: new ExternalApp(name:'default',description:'default ext app',accessKey:'asdf').save(flush:true)
 		// defaultShout
 		//def defaultShout = new ScheduledShout("name":ok.defaultValue.tweetOutputText,"eventTitle":"default none available","statusOut":ok.defaultValue)
