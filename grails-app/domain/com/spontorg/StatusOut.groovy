@@ -16,6 +16,22 @@ class StatusOut {
 		owner nullable: true
 		externalApp nullable: true
     }
+
+//	public static String DEFAULT_STATUS = "#Robotics #innovation #makerspace #3dprinting neighborhood community center #OPENSOURCE open to the people @OHCollaborative #Youngstown"
+//
+//	StatusOut(){
+//		this.tweetOutputText=DEFAULT_STATUS
+//		this.description
+//
+//	}
+//
+//	StatusOut(String tweetOutputText){
+//		if (tweetOutputText==null || tweetOutputText=="")
+//			this.tweetOutputText=DEFAULT_STATUS
+//		else
+//			this.tweetOutputText=tweetOutputText
+//	}
+
 	String toString() {
 
 		String externApp = externalApp?.name ?: "NULL"

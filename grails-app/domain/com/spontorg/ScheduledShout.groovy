@@ -20,6 +20,8 @@ class ScheduledShout {
 		priority nullable:true
     }
 
+	static String DEFAULTNAME ="Default"
+
 	String toString() {
 		int displayLen =20
 		if (name==null)

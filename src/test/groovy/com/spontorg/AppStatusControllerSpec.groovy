@@ -2,6 +2,7 @@ package com.spontorg
 
 import grails.test.mixin.*
 import spock.lang.*
+import com.spontorg.ExternalApp
 
 @TestFor(AppStatusController)
 @Mock(AppStatus)
@@ -14,6 +15,28 @@ class AppStatusControllerSpec extends Specification {
         //params["name"] = 'someValidName'
         assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
     }
+
+    void "Test the index2() method"() {
+
+        println("default="+AppStatusController.DEFAULT_STATUS)
+
+        setup:
+        def ok = new ExternalApp("defaulttest", "description","1234")
+        GroovyMock(ExternalApp, global: true)
+        ExternalApp.findByAccessKey("1234")  >> ok
+        new ExternalApp("defaulttest", "description","1234") >> ok
+        new ExternalApp("Exception Default","Exception Default", "Exception default") >> ok
+
+        println("ExternalApp="+ok)
+
+        when:"The index2 action is executed"
+        controller.index2("1234")
+
+        then:"The default is correct"
+        println("model="+model)
+        model.size() == 1
+    }
+
 
     void "Test the index action returns the correct model"() {
 
