@@ -2,8 +2,8 @@ package com.spontorg
 
 class ScheduledShout {
 
-    String name
-	String eventTitle
+    String name = ""
+	String eventTitle = ""
 	Date releaseDate = new Date()
 	int priority=0
 	boolean delivered = false
@@ -24,10 +24,11 @@ class ScheduledShout {
 
 	String toString() {
 		int displayLen =20
-		if (name==null)
+		if (eventTitle==null || name==null)
 			return eventTitle+"null"
-		if (displayLen>(name.length()+eventTitle.length()))
-			displayLen=(name.length()+eventTitle.length())
+			
+		if (displayLen>(name.length()+eventTitle?.length()))
+			displayLen=(name.length()+eventTitle?.length())
         return (name+eventTitle).substring(0,displayLen)
     }
 }
